@@ -86,7 +86,7 @@ calcDisplayBalance(account1.movements);
 
 const createUserNames = function (accs) {
   accs.forEach(function (acc) {
-    acc.username = accgit.owner
+    acc.username = acc.owner
       .toLocaleLowerCase()
       .split(" ")
       .map((name) => name[0])
@@ -141,3 +141,10 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // let balance2 = 0;
 // for (const mov of movements) balance2 += mov;
 // console.log(balance2);
+
+//***Maximum value
+const max = movements.reduce(
+  (acc, mov) => (acc > mov ? acc : mov),
+  movements[0]
+);
+console.log(max);
