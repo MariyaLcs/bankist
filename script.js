@@ -78,14 +78,21 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
 const createUserNames = function (accs) {
-  accs.forEach(function(acc){
-    acc.username = accgit .owner
-    .toLocaleLowerCase()
-    .split(" ")
-    .map((name) => name[0])
-    .join("");
-  })
+  accs.forEach(function (acc) {
+    acc.username = accgit.owner
+      .toLocaleLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join("");
+  });
+};
 
 createUserNames(accounts);
 
@@ -122,15 +129,15 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(withdrawals);
 
 //***The Reduce Method
-const balance = movements.reduce(function (acc, cur, i, arr) {
-  console.log(`Iteration ${i}: ${acc}`);
-  return acc + cur;
-}, 0);
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + cur;
+// }, 0);
 
-console.log(balance);
-const balance = movements.reduce((acc, cur) => acc + cur, 0);
-console.log(balance);
+// console.log(balance);
+// const balance = movements.reduce((acc, cur) => acc + cur, 0);
+// console.log(balance);
 
-let balance2 = 0;
-for (const mov of movements) balance2 += mov;
-console.log(balance2);
+// let balance2 = 0;
+// for (const mov of movements) balance2 += mov;
+// console.log(balance2);
