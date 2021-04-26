@@ -316,3 +316,17 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //***Same
 // movements.sort((a, b) => a - b);
 // console.log(movements);
+//***Array.from
+// const y = Array.from({ length: 7 }, () => 1);
+// console.log(y);
+// const z = Array.from({ length: 7 }, (cur, i) => i + 1);
+// console.log(z);
+//***same
+// const z2 = Array.from({ length: 7 }, (_, i) => i + 1);
+// console.log(z2);
+labelBalance.addEventListener("click", function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll(".movements__value"),
+    (el) => Number(el.textContent.replace("EUR", "£"))
+  );
+});
