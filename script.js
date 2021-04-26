@@ -57,8 +57,11 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
-const displayMovements = function (movements) {
-  movements.forEach(function (mov, i) {
+const displayMovements = function (movements, sort = false) {
+  containerMovements.innerHTML = "";
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const html = `
     <div class="movements__row">
@@ -196,6 +199,13 @@ btnClose.addEventListener("click", function (e) {
   inputCloseUsername.value = inputClosePin.value = "";
 });
 
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
 //*** Lecture
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //***The Map Method
@@ -274,5 +284,35 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(anyDeposits);
 
 //***separate callbacks
-const deposit = (mov) => mov > 0;
-console.log(movements.some(deposit));
+// const deposit = (mov) => mov > 0;
+// console.log(movements.some(deposit));
+
+//***flat and flatMap methods
+// const accountMovements = accounts.map((acc) => acc.movements);
+// const allMovements = accountMovements.flat();
+// const overalBalance = allMovements.reduce((acc, cur) => cur + acc, 0);
+// console.log(overalBalance);
+//***flat
+// const overalBalance2 = accounts
+//   .map((acc) => acc.movements)
+//   .flat()
+//   .reduce((acc, cur) => cur + acc, 0);
+// console.log(overalBalance2);
+//***flatMap
+// const overalBalance3 = accounts
+//   .flatMap((acc) => acc.movements)
+//   .reduce((acc, cur) => cur + acc, 0);
+// console.log(overalBalance3);
+
+// ***Sorting Arrays
+//***Strings
+// const owners = ["Jonas", "Zach", "Adam", "Martha"];
+// console.log(owners.sort());
+// ***Numbers
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (b > a) return -1;
+// });
+//***Same
+// movements.sort((a, b) => a - b);
+// console.log(movements);
