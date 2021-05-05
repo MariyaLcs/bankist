@@ -143,6 +143,11 @@ const updateUI = function (acc) {
 // Event handlers
 let currentAccount;
 
+//Fake always logged in
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
 btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -242,9 +247,9 @@ btnSort.addEventListener("click", function (e) {
 // LECTURES
 //***Remainder Operator
 
-labelBalance.addEventListener("click", function () {
-  [...document.querySelectorAll(".movements__row")].forEach(function (row, i) {
-    if (i % 2 === 0) row.style.backgroundColor = "orangered";
-    if (i % 3 === 0) row.style.backgroundColor = "blue";
-  });
-});
+// labelBalance.addEventListener("click", function () {
+//   [...document.querySelectorAll(".movements__row")].forEach(function (row, i) {
+//     if (i % 2 === 0) row.style.backgroundColor = "orangered";
+//     if (i % 3 === 0) row.style.backgroundColor = "blue";
+//   });
+// });
